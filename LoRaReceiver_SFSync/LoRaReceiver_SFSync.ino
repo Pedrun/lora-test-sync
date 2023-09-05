@@ -64,8 +64,7 @@ void loop() {
       Serial.println("[↑] " + message);
 
       // await for response
-      int responseSize = 0;
-      while (responseSize == 0) { responseSize = LoRa.parsePacket(); }
+      while (!LoRa.parsePacket());
       
       // read response
       String response = LoRa.readStringUntil('\n');

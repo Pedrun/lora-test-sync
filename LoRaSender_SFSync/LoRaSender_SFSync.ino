@@ -18,8 +18,7 @@ bool changeSF(int newSF) {
   Serial.println("[↑] " + message);
 
   // await for ACK
-  int responseSize = 0;
-  while (responseSize == 0) { responseSize = LoRa.parsePacket(); };
+  while (!LoRa.parsePacket());
 
   String response1 = LoRa.readStringUntil('\n');
   response1.trim();
@@ -31,8 +30,7 @@ bool changeSF(int newSF) {
   }
   
   // await for response
-  responseSize = 0;
-  while (responseSize == 0) { responseSize = LoRa.parsePacket(); };
+  while (!LoRa.parsePacket());
 
   String response2 = LoRa.readStringUntil('\n');
   response2.trim();
